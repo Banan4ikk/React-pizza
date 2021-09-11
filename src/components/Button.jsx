@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from 'classnames';
 
-function Button({cart,outline,add,black,circle,delimiter,cartBottom}) {
+function Button({cart, outline, add, black, circle, delimiter, cartBottom, OnClick}) {
    return (
       // href="/cart.html"
       <button className={classnames('button', {
@@ -13,7 +13,8 @@ function Button({cart,outline,add,black,circle,delimiter,cartBottom}) {
             'button__delimiter': delimiter,
             'cart_bottom-buttons': cartBottom
          }
-      )}>
+      )}
+              onClick={OnClick}>
          <span>520 ₽</span>
          <div className="button__delimiter"/>
          <svg
