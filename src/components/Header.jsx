@@ -1,20 +1,24 @@
 import React from "react";
 import Button from "./Button";
+import {Link} from "react-router-dom";
 
 function Header() {
-   return(
+   return (
       <div className="header">
          <div className="container">
-            <div className="header__logo">
-               <img width="38" src="../../img/pizza-logo.svg" alt="Pizza logo"/>
-               <div>
-                  <h1>React Pizza</h1>
-                  <p>самая вкусная пицца во вселенной</p>
+            <Link to="/">
+               <div className="header__logo">
+                  <img width="38" src="../../img/pizza-logo.svg" alt="Pizza logo"/>
+                  <div>
+                     <h1>React Pizza</h1>
+                     <p>самая вкусная пицца во вселенной</p>
+                  </div>
                </div>
-            </div>
+            </Link>
             <div className="header__cart">
-               <Button cart>
-               </Button>
+               <Link to="/cart">
+                  <Button cart/>
+               </Link>
             </div>
          </div>
       </div>
