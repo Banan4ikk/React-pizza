@@ -1,8 +1,8 @@
+import React from "react";
+import axios from "axios";
 import {Header} from "./components";
 import {Cart, Home} from "./pages";
-import React from "react";
 import {Route} from "react-router-dom";
-import axios from "axios";
 
 function App() {
    const [pizzaItems, setPizzaItems] = React.useState([]);

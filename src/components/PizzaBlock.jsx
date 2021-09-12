@@ -1,6 +1,6 @@
 import React from 'react';
 import classNames from "classnames";
-import PropTypes, {number} from 'prop-types';
+import PropTypes from 'prop-types';
 
 
 function PizzaBlock({imageUrl, name, types, sizes, price, category, rating}) {
@@ -85,14 +85,21 @@ function PizzaBlock({imageUrl, name, types, sizes, price, category, rating}) {
 }
 
 PizzaBlock.propTypes = {
-   name: PropTypes.string,
-   imageUrl: PropTypes.string,
-   types: PropTypes.arrayOf(number),
-   sizes: PropTypes.arrayOf(number),
-   price: PropTypes.number,
-   category: PropTypes.number,
-   rating: PropTypes.number
-
+   name: PropTypes.string.isRequired,
+   imageUrl: PropTypes.string.isRequired,
+   types: PropTypes.arrayOf(PropTypes.number).isRequired,
+   sizes: PropTypes.arrayOf(PropTypes.number).isRequired,
+   price: PropTypes.number.isRequired,
+   category: PropTypes.number.isRequired,
+   rating: PropTypes.number.isRequired
 };
+
+PizzaBlock.defaultTypes = {
+   types: [],
+   sizes: [],
+   name: "----",
+   price: 0,
+   imageUrl: 'https://w7.pngwing.com/pngs/932/174/png-transparent-sketch-of-pizza-sushi-pizza-drawing-food-line-pizza-symmetry-monochrome-lines.png'
+}
 
 export default PizzaBlock;
