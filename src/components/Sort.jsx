@@ -5,7 +5,7 @@ function Sort({items, onClickItem}) {
    const [visiblePopup, setVisiblePopup] = React.useState(false);
    const [activeItem, setActiveItem] = React.useState(0);
    const sortRef = React.useRef();
-   const activeName = items[activeItem];
+   const activeName = items[activeItem].name;
 
    React.useEffect(() => {
       document.body.addEventListener('click', onOutsideClick);
@@ -53,8 +53,8 @@ function Sort({items, onClickItem}) {
                      <li
                         className={activeItem === index ? 'active' : ''}
                         onClick={() => onSelectItem(index)}
-                        key={`${item}_${index}`}
-                     >{item}</li>
+                        key={`${item.type}_${index}`}
+                     >{item.name}</li>
                   ))}
                </ul>
             </div>

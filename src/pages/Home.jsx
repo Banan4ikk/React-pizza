@@ -16,9 +16,10 @@ function Home({items}) {
             />
             <Sort
                items={[
-                  'Популярности',
-                  'Цене',
-                  'Алафвиту'
+                  {name: 'Популярности', type: 'popular'},
+                  {name: 'Цене', type: 'price'},
+                  {name: 'Алафвиту', type: 'alphabet'},
+
                ]}/>
          </div>
          <h2 className="content__title">Все пиццы</h2>
