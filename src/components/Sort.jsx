@@ -1,6 +1,6 @@
 import React from 'react';
 
-function Sort({items, onClickItem}) {
+const Sort = React.memo(function Sort({items, onClickItem}) {
 
    const [visiblePopup, setVisiblePopup] = React.useState(false);
    const [activeItem, setActiveItem] = React.useState(0);
@@ -61,6 +61,6 @@ function Sort({items, onClickItem}) {
          }
       </div>
    );
-}
+})
 
 export default Sort;

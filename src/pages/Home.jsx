@@ -11,6 +11,12 @@ const categories = [
    'Закрытые',
 ]
 
+const sortItems = [
+   {name: 'Популярности', type: 'popular'},
+   {name: 'Цене', type: 'price'},
+   {name: 'Алафвиту', type: 'alphabet'},
+]
+
 function Home() {
    const dispatch = useDispatch();
    const items = useSelector(({pizzas}) => {
@@ -19,7 +25,7 @@ function Home() {
 
    const onSelectCategory = React.useCallback((index) => {
       dispatch(setCategory(index))
-   },[])
+   }, [])
 
    return (
       <div className="container">
@@ -29,11 +35,7 @@ function Home() {
                items={categories}
             />
             <Sort
-               items={[
-                  {name: 'Популярности', type: 'popular'},
-                  {name: 'Цене', type: 'price'},
-                  {name: 'Алафвиту', type: 'alphabet'},
-               ]}/>
+               items={sortItems}/>
          </div>
          <h2 className="content__title">Все пиццы</h2>
          <div className="content__items">
