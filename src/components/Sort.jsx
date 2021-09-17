@@ -1,19 +1,17 @@
 import React from 'react';
 
-const Sort = React.memo(function Sort({items, onClickItem}) {
+const Sort = React.memo(function Sort({items, onClickSortType, activeSortType}) {
 
    const [visiblePopup, setVisiblePopup] = React.useState(false);
-   const [activeItem, setActiveItem] = React.useState(0);
    const sortRef = React.useRef();
-   const activeName = items[activeItem].name;
+   const activeName = items.find(obj => obj.type === activeSortType).name;
 
    React.useEffect(() => {
       document.body.addEventListener('click', onOutsideClick);
    }, [])
 
-
    const onSelectItem = (index) => {
-      setActiveItem(index);
+      onClickSortType(index);
       setVisiblePopup(false);
    };
 
@@ -51,8 +49,8 @@ const Sort = React.memo(function Sort({items, onClickItem}) {
                <ul>
                   {items && items.map((item, index) => (
                      <li
-                        className={activeItem === index ? 'active' : ''}
-                        onClick={() => onSelectItem(index)}
+                        className={onClickSortType === item.type ? 'active' : ''}
+                        onClick={() => onSelectItem(item.type)}
                         key={`${item.type}_${index}`}
                      >{item.name}</li>
                   ))}
@@ -63,4 +61,7 @@ const Sort = React.memo(function Sort({items, onClickItem}) {
    );
 })
 
+Sort.defaultProps = {
+   items: []
+}
 export default Sort;
