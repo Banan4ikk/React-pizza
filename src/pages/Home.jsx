@@ -13,9 +13,9 @@ const categories = [
 ]
 
 const sortItems = [
-   {name: 'Популярности', type: 'popular'},
-   {name: 'Цене', type: 'price'},
-   {name: 'Алафвиту', type: 'alphabet'},
+   {name: 'Популярности', type: 'popular', order: 'desc'},
+   {name: 'Цене', type: 'price', order: 'desc'},
+   {name: 'Алафвиту', type: 'name', order: 'asc'},
 ]
 
 function Home() {
@@ -51,7 +51,7 @@ function Home() {
             />
             <Sort
                items={sortItems}
-               activeSortType={sortBy}
+               activeSortType={sortBy.type}
                onClickSortType = {onSelectSortType}
             />
          </div>

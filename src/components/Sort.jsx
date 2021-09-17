@@ -50,7 +50,7 @@ const Sort = React.memo(function Sort({items, onClickSortType, activeSortType}) 
                   {items && items.map((item, index) => (
                      <li
                         className={onClickSortType === item.type ? 'active' : ''}
-                        onClick={() => onSelectItem(item.type)}
+                        onClick={() => onSelectItem(item)}
                         key={`${item.type}_${index}`}
                      >{item.name}</li>
                   ))}
