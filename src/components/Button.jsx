@@ -1,7 +1,7 @@
 import React from "react";
 import classnames from 'classnames';
 
-function Button({cart, outline, add, black, circle, delimiter, cartBottom, OnClick, children}) {
+function Button({cart, outline, add, black, circle, delimiter, cartBottom, onClick, children}) {
 
 
    return (
@@ -15,7 +15,7 @@ function Button({cart, outline, add, black, circle, delimiter, cartBottom, OnCli
             'cart_bottom-buttons': cartBottom
          }
       )}
-              onClick={OnClick}>
+      onClick={onClick}>
          {children}
       </button>
    )

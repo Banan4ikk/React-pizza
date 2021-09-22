@@ -30,7 +30,7 @@ function Home() {
    })
 
    React.useEffect(() => {
-      dispatch(fetchPizzas(sortBy,category));
+      dispatch(fetchPizzas(sortBy, category));
    }, [category, sortBy]);
 
    const onSelectCategory = React.useCallback((index) => {
@@ -52,12 +52,18 @@ function Home() {
             <Sort
                items={sortItems}
                activeSortType={sortBy.type}
-               onClickSortType = {onSelectSortType}
+               onClickSortType={onSelectSortType}
             />
          </div>
          <h2 className="content__title">Все пиццы</h2>
          <div className="content__items">
-            {isLoaded ? items.map(item => <PizzaBlock key={item.id} isLoading={true} {...item}/>) :
+            {isLoaded ? items.map(item =>
+                  <PizzaBlock
+                     onClickAddPizza={(item) => console.log(item)}
+                     key={item.id}
+                     isLoading={true}
+                     {...item}
+                  />) :
                Array(12).fill(0).map((_, index) => <PizzaLoadingBlock key={index}/>)}
          </div>
       </div>

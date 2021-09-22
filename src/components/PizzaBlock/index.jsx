@@ -3,7 +3,7 @@ import classNames from "classnames";
 import PropTypes from 'prop-types';
 import Button from "../Button";
 
-function PizzaBlock({imageUrl, name, types, sizes, price}) {
+function PizzaBlock({id, imageUrl, name, types, sizes, price, onClickAddPizza}) {
 
    const availableTypes = ['тонкое', 'традиционное'];
    const availableSize = [26, 30, 40];
@@ -63,7 +63,7 @@ function PizzaBlock({imageUrl, name, types, sizes, price}) {
          </div>
          <div className="pizza-block__bottom">
             <div className="pizza-block__price">от {price} ₽</div>
-            <Button add outline>
+            <Button onClick={() => onClickAddPizza({id, imageUrl, name, price})} add outline>
                <svg
                   width="12"
                   height="12"
@@ -91,7 +91,8 @@ PizzaBlock.propTypes = {
    sizes: PropTypes.arrayOf(PropTypes.number),
    price: PropTypes.number,
    category: PropTypes.number,
-   rating: PropTypes.number
+   rating: PropTypes.number,
+   onAddPizza: PropTypes.func
 };
 
 PizzaBlock.defaultTypes = {
