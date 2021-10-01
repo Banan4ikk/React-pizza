@@ -2,7 +2,8 @@ import React from 'react';
 import {Link} from "react-router-dom";
 import {CartItem} from "../components";
 import {useDispatch, useSelector} from "react-redux";
-import {clearCart} from "../redux/actions/cart";
+import {clearCart, minusCartItem, plusCartItem, removeCartItem} from "../redux/actions/cart";
+import Button from "../components/Button";
 
 function Cart() {
    const dispatch = useDispatch();
@@ -19,6 +20,24 @@ function Cart() {
       }
    }
 
+   const onRemoveItem = (id) => {
+     if(window.confirm('Вы действительно хотите удалить?'))
+        dispatch(removeCartItem(id));
+   }
+
+   const onPlusItem = (id) => {
+     dispatch(plusCartItem(id))
+   }
+
+   const onMinusItem = (id) => {
+     dispatch(minusCartItem(id))
+   }
+   
+   const onClickOrder = () => {
+     console.log('ВАШ ЗАКАЗ:', items);
+     dispatch(clearCart());
+   }
+   
    return (
       <div className="container container--cart">
          {totalCount ? <div className="cart">
@@ -57,11 +76,16 @@ function Cart() {
                   {
                      addedPizzas.map((item) =>
                         <CartItem
+                           key={item.id}
+                           id = {item.id}
                            name={item.name}
                            type={item.type}
                            size={item.size}
                            totalPrice={items[item.id].totalPrice}
                            totalCount={items[item.id].items.length}
+                           onRemove = {onRemoveItem}
+                           onMinus = {onMinusItem}
+                           onPlus = {onPlusItem}
                         />
                      )
                   }
@@ -77,18 +101,20 @@ function Cart() {
                            <path d="M7 13L1 6.93015L6.86175 1" stroke="#D3D3D3" strokeWidth="1.5" strokeLinecap="round"
                                  strokeLinejoin="round"/>
                         </svg>
-                        <span>Вернуться назад</span>
+                        <Link to={'/'} >
+                           <span>Вернуться назад</span>
+                        </Link>
                      </Link>
-                     <div className="button pay-btn">
+                     <Button onClick={onClickOrder} payBtn>
                         <span>Оплатить сейчас</span>
-                     </div>
+                     </Button>
                   </div>
                </div>
             </div>
             :
             <div className="container container--cart">
                <div className="cart cart--empty">
-                  <h2>Корзина пустая <icon>😕</icon></h2>
+                  <h2>Корзина пустая <i>😕</i></h2>
                   <p>
                      Вероятней всего, вы не заказывали ещё пиццу.<br/>
                      Для того, чтобы заказать пиццу, перейди на главную страницу.
