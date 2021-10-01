@@ -4,7 +4,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {setCategory, setSortBy} from "../redux/actions/filters";
 import {fetchPizzas} from "../redux/actions/pizzas";
 import {addPizzaToCart} from "../redux/actions/cart";
-import cart from "../redux/redusers/cart";
 
 const categories = [
    'Мясные',
@@ -68,7 +67,7 @@ function Home() {
                   <PizzaBlock
                      onClickAddPizza={handleAddPizzaToCart}
                      key={item.id}
-                     addedCount = {cartItems[item.id] && cartItems[item.id].length}
+                     addedCount = {cartItems[item.id] && cartItems[item.id].items.length}
                      {...item}
                   />) :
                Array(12).fill(0).map((_, index) => <PizzaLoadingBlock key={index}/>)}
