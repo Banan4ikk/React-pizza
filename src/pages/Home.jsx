@@ -7,7 +7,7 @@ import {addPizzaToCart} from "../redux/actions/cart";
 
 const categories = [
    'Мясные',
-   'Вегетрианская',
+   'Вегетарианская',
    'Гриль',
    'Острые',
    'Закрытые',
